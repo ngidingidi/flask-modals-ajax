@@ -9,9 +9,13 @@ To achieve this goal, I use jQuery to obtain the row value of the brand column e
 Here are some of the resources which helped me achieve this:
 
 https://stackoverflow.com/questions/2315600/jquery-getting-the-text-value-of-a-table-cell-in-the-same-row-as-a-clicked-ele
+
 https://stackoverflow.com/questions/37631388/how-to-get-data-in-flask-from-ajax-post
+
 https://codehandbook.org/python-flask-jquery-ajax-post/
+
 https://www.bogotobogo.com/python/Flask/Python_Flask_with_AJAX_JQuery.php
+
 https://blog.heptanalytics.com/flask-plotly-dashboard/
 
 I hope someone will find this helpful. I certainly benefitted from what others had shared on the web. If you have any questions, feel free to email me at sicelomasango@gmail.com. 
