@@ -1,0 +1,45 @@
+<table id="directory-{{ tbname }}" class="table {% if table|length >10 %}table-sm{% endif %}">
+    <thead>
+    <tr class="thead-dark">
+        {% for col in table.columns %}
+            <th>{{ col }}</th>
+        {% endfor %}
+
+        {% if view|safe %}
+            <th role="tablist">Charts</th>
+        {% endif %}
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in table.iterrows() %}
+        <tr class="align-content-center">
+            {% for col, value in row[1].items() %}
+                {% if "Go To" in col %}
+                    {% if "ALL" in value %}
+                        <td></td>
+                    {% else %}
+                        <td class="pt-3"><a href="{{ value }}">Go To {{ goto }}</a></td>
+                    {% endif %}
+                {% else %}
+                    {% if colors is defined %}
+                        {% set color = colors.iloc[row[0]][col]|safe %}
+                    {% endif %}
+                    <td class="pt-3" style="background-color:
+                            {}">
+                        {{ value }}</td>
+                {% endif %}
+            {% endfor %}
+            {% if view|safe %}
+        
+                <td><a>
+                    <button class="btn btn-outline-dark pb-1" data-toggle="#" data-target="#" >View</button>
+                </a></td>
+
+            {% endif %}
+        </tr>
+    {% endfor %}
+
+    </tbody>
+
+</table>

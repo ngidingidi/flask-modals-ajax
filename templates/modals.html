@@ -1,0 +1,123 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <h3 class="my-3 text-center">All Brands</h3>
+    <div class="row flex-row d-flex justify-items-between mx-5">
+        <div class="col flex-column"  style="z-index: 200000">
+            <h4 class="my-3 text-center">Cost</h4>
+            {% set view=True %}
+            {% include "table.html" %}
+
+            <script>
+          
+            
+              $(".btn").click(function(e) {
+                                      var col_brand = $(this).closest('tr').find('td:eq(1)').text();
+                                      var zbc = $(this).closest('tr').find('td:eq(2)').text();
+
+                                      // alert(col_brand);
+
+                                      $.ajax({
+                                        url:'/content',
+                                        type:'POST',
+                                        data:{'data': col_brand, 'musa':zbc },
+                                        dataType:'json',
+                                        success: function(response) {
+                                          
+                                          $("#myModal").modal('show');
+                                          Plotly.newPlot('myDiv', response);
+                                          var update = {width: 600, height: 400};
+                                          Plotly.relayout('myDiv', update);
+                                    
+                                        },
+                                        error: function(error){
+                                          console.log(error);
+                                        }
+                                      });
+                                    
+                                      e.preventDefault();
+                                      console.log(col_brand);
+                                
+                      
+                                      
+      
+              });
+            
+          </script>
+      
+    
+             <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+            
+              <!-- Modal content-->
+               <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title"></h4>
+                            </div>
+                   <div class="modal-body" id="sic">
+                          <p>The plotly charts are interactive. This is fake data &#128526</p>
+        
+                                <div class="mx-5" id="content">
+            
+                    
+                        
+                                              <div class="mt-5 justify-content-center"  id="myDiv">
+
+
+                                                      <script>
+                                                               
+                                                      </script>
+                                              </div>
+                    
+                                 </div>   
+                     </div>
+        
+                 </div>
+
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+            </div>
+              
+        </div>
+  
+        
+      </div>
+   
+  
+
+
+   </div>
+
+                                      <div class="chart" id="mnike">
+                                      <script>
+                                      </script>
+                                      </div>
+
+        <div class="col flex-column" >
+            <h4 class="my-3 text-center">All Charts</h4>
+            <div class="mx-5" id="content">
+                {% if graphs is defined %}
+                {% for key, value in graphs.items() %}
+                    <div class="d-flex justify-content-center"  id="scatterplot-{{ key }}">
+                            <script>
+                                var g = {{value | safe}};
+                                Plotly.plot('scatterplot-{{ key }}', g, {width: screen.availWidth / 2 * .75, height: 400});
+                                var update = {width: screen.availWidth / 2 * .75, height: 400};
+                                Plotly.relayout('scatterplot-{{ key }}', update);
+                            </script>
+                    </div>
+
+                {% endfor %}
+                {% endif %}
+            
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

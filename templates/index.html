@@ -1,0 +1,43 @@
+{% extends "bootstrap/base.html" %}
+
+
+{% block navbar %}
+    <nav class="navbar navbar-expand navbar-light bg-light">
+
+        <ul class="navbar-nav justify-content-between">
+            <li class="nav-item active">
+                <a class="nav-link mx-3 pt-1" style="font-weight: 600; font-size: 1.5rem;"
+                   href="{{ url_for('modals') }}">FLASK MODALS</a>
+            </li>
+
+            <li class="nav-item ml-3">
+                <a class="nav-link" href="{{ url_for('modals') }}">Modals</a>
+            </li>
+        </ul>
+
+        <a class="navbar-brand ml-auto" href="#">
+            <img src="{{ url_for('send_file', file_path='') }}"
+                 alt="SSM LOGO">
+        </a>
+
+    </nav>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+{% endblock %}
+
+{% block footer %}
+
+    <footer id="footer" class="d-flex justify-content-between mt-5 mx-5">
+        <p class="text-right">Last Updated: {{ fileUpdate }} </p>
+        <p>Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script>
+            - for questions, please contact sicelomasango@gmail.com
+        </p>
+    </footer>
+
+{% endblock %}

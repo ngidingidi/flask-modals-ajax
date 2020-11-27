@@ -1,0 +1,90 @@
+{% block doc -%}
+    <!DOCTYPE html>
+    <html{% block html_attribs %}{% endblock html_attribs %}>
+    {%- block html %}
+        <head>
+            {%- block head %}
+                <title>{% block title %}Flask Modals{% endblock title %}</title>
+                <link rel="icon" href="{{ url_for('send_file', file_path='static/logo.png') }}">
+                {%- block metas %}
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                {%- endblock metas %}
+
+                {%- block styles %}
+                    <!-- Bootstrap -->
+                    <link href="{{ url_for('send_file', file_path='bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+                    <link href="{{ url_for('send_file', file_path='bootstrap/css/bootstrap-grid.css') }}"
+                          rel="stylesheet">
+                    <link href="{{ url_for('send_file', file_path='static/custom.css') }}"
+                          rel="stylesheet">
+                    {#                    <link rel="stylesheet" type="text/css"#}
+                    {#                          href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">#}
+                    <link rel="stylesheet" type="text/css"
+                          href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+                    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+                          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+                          crossorigin="anonymous">
+                    <link rel="stylesheet" href="https://use.typekit.net/dig0toy.css">
+                    {% block scripts %}
+                        <script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+                                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" 
+                                crossorigin="anonymous"></script>
+                        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                                crossorigin="anonymous"></script> -->
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                                crossorigin="anonymous"></script>
+                        <script src="{{ url_for('send_file', file_path='bootstrap/js/bootstrap.bundle.js') }}"></script>
+                        <script src="{{ url_for('send_file', file_path='bootstrap/js/bootstrap.bundle.js') }}"></script>
+                        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+                        <script type="text/javascript" charset="utf8"
+                                src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+
+                        <script type="text/javascript" charset="utf8"
+                                src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+                        <script>$(document).ready(function () {
+                            $('.collapse')
+                                .on('shown.bs.collapse', function () {
+                                    $(this)
+                                        .parent()
+                                        .find(".fa-angle-double-down")
+                                        .removeClass("fa-angle-double-down")
+                                        .addClass("fa-angle-double-up");
+                                })
+                                .on('hidden.bs.collapse', function () {
+                                    $(this)
+                                        .parent()
+                                        .find(".fa-angle-double-up")
+                                        .removeClass("fa-angle-double-up")
+                                        .addClass("fa-angle-double-down");
+                                });
+
+                        });</script>
+
+
+
+                    {%- endblock scripts %}
+                {%- endblock styles %}
+            {%- endblock head %}
+        </head>
+        <body{% block body_attribs %}{% endblock body_attribs %}>
+        {% block body -%}
+            <div class="flex-column d-flex min-vh-100">
+                {% block navbar %}
+                {%- endblock navbar %}
+                {% block content -%}
+                {%- endblock content %}
+                {% block footer %}
+                {%- endblock %}
+            </div>
+
+
+
+        {%- endblock body %}
+        </body>
+    {%- endblock html %}
+    </html>
+{% endblock doc -%}
